@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 7: Future Living - English Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff006e;
+            --success: #10b981;
+            --error: #ef4444;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #8b5cf6;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #1a2744 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .progress-container {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.5s ease;
+            width: 0%;
+            border-radius: 10px;
+        }
+
+        .missions-grid {
+            display: grid;
+            gap: 30px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .mission {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .mission-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .mission-number {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .mission-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .mission-content {
+            margin-bottom: 20px;
+        }
+
+        .instruction {
+            color: var(--text-light);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .gap-fill-text {
+            background: #f0f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            line-height: 2;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .gap-input {
+            display: inline-block;
+            padding: 8px 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            width: auto;
+            min-width: 80px;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .gap-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .gap-input.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .gap-input.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+            color: var(--error);
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .exercise-item {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .exercise-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .original-sentence {
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .arrow {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .text-input.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: var(--success);
+        }
+
+        .text-input.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+            color: var(--error);
+        }
+
+        .mc-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .mc-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f9fafb;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .mc-option:hover {
+            border-color: var(--primary);
+            background: #f0f7ff;
+        }
+
+        .mc-option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .mc-option.selected {
+            background: #f0f7ff;
+            border-color: var(--primary);
+        }
+
+        .mc-option.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+        }
+
+        .mc-option.incorrect {
+            background: #fef2f2;
+            border-color: var(--error);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-check {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .btn-check:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-check:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-reset {
+            background: var(--border-color);
+            color: var(--text-dark);
+        }
+
+        .btn-reset:hover {
+            background: #cbd5e1;
+        }
+
+        .hint {
+            display: none;
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+
+        .hint.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                max-height: 300px;
+                transform: translateY(0);
+            }
+        }
+
+        .attempts-counter {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+        .score-display {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--success), #06b6d4);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .final-section {
+            margin-top: 50px;
+            padding: 40px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border: 2px solid var(--border-color);
+        }
+
+        .final-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .score-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 30px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .score-value {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .validation-code {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .message {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--text-dark);
+        }
+
+        .message.success {
+            color: var(--success);
+        }
+
+        .message.warning {
+            color: #f59e0b;
+        }
+
+        .btn-final {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-final:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 212, 255, 0.3);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .mission {
+                padding: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn-check, .btn-reset {
+                width: 100%;
+            }
+
+            .gap-fill-text {
+                font-size: 0.9rem;
+                line-height: 1.8;
+            }
+        }
+
+        /* Anti-inspect measures */
+        body {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        input, textarea {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Unit 7: Future Living</h1>
+            <p class="subtitle">Master English Grammar & Vocabulary for Tomorrow's World</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-label">
+                <span>Overall Progress</span>
+                <span id="progressText">0/40 points</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <div class="missions-grid">
+            <!-- MISSION 1: Articles -->
+            <div class="mission" id="mission1">
+                <div class="mission-header">
+                    <div class="mission-number">1</div>
+                    <div class="mission-title">Articles (Gap-Fill)</div>
+                </div>
+                <div class="mission-content">
+                    <p class="instruction">Fill in the gaps with the correct articles: a, an, the, or leave blank (-)</p>
+                    <div class="gap-fill-text">
+                        In 
+                        <input type="text" class="gap-input" id="gap1" maxlength="3" placeholder="___" data-answer="the">
+                        future, living in 
+                        <input type="text" class="gap-input" id="gap2" maxlength="3" placeholder="___" data-answer="an">
+                        urban hub will be different. Most people will live in 
+                        <input type="text" class="gap-input" id="gap3" maxlength="3" placeholder="___" data-answer="a">
+                        smart city where 
+                        <input type="text" class="gap-input" id="gap4" maxlength="3" placeholder="___" data-answer="-">
+                        renewable energy is 
+                        <input type="text" class="gap-input" id="gap5" maxlength="3" placeholder="___" data-answer="the">
+                        main power source. It is 
+                        <input type="text" class="gap-input" id="gap6" maxlength="3" placeholder="___" data-answer="an">
+                        affordable and 
+                        <input type="text" class="gap-input" id="gap7" maxlength="3" placeholder="___" data-answer="a">
+                        sustainable solution.
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-check" onclick="checkMission1()">Check Answers</button>
+                        <button class="btn btn-reset" onclick="resetMission1()">Reset</button>
+                    </div>
+                    <div class="attempts-counter" id="attempts1"></div>
+                    <div class="hint" id="hint1">✨ Hint: Use "the" for specific things, "a/an" for general things, and "-" for no article. "An" is used before vowel sounds.</div>
+                    <div class="score-display hidden" id="score1"></div>
+                </div>
+            </div>
+
+            <!-- MISSION 2: Passive Voice -->
+            <div class="mission" id="mission2">
+                <div class="mission-header">
+                    <div class="mission-number">2</div>
+                    <div class="mission-title">Passive Voice Transformation</div>
+                </div>
+                <div class="mission-content">
+                    <p class="instruction">Rewrite the sentences in passive voice. You must write complete sentences.</p>
+                    
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 1</div>
+                        <div class="original-sentence">💬 Original: "High-tech companies build affordable houses."</div>
+                        <div class="arrow">↓ Passive:</div>
+                        <textarea class="text-input" id="passive1" placeholder="Affordable houses are..."></textarea>
+                        <div class="attempts-counter" id="attempts2-1"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 2</div>
+                        <div class="original-sentence">💬 Original: "An architect designed that skyscraper in 1990."</div>
+                        <div class="arrow">↓ Passive:</div>
+                        <textarea class="text-input" id="passive2" placeholder="That skyscraper was..."></textarea>
+                        <div class="attempts-counter" id="attempts2-2"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 3</div>
+                        <div class="original-sentence">💬 Original: "They will protect the natural habitat."</div>
+                        <div class="arrow">↓ Passive:</div>
+                        <textarea class="text-input" id="passive3" placeholder="The natural habitat will..."></textarea>
+                        <div class="attempts-counter" id="attempts2-3"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 4</div>
+                        <div class="original-sentence">💬 Original: "We are developing cutting-edge tech now."</div>
+                        <div class="arrow">↓ Passive:</div>
+                        <textarea class="text-input" id="passive4" placeholder="Cutting-edge tech is..."></textarea>
+                        <div class="attempts-counter" id="attempts2-4"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 5</div>
+                        <div class="original-sentence">💬 Original: "Scientists have created adaptable spaces."</div>
+                        <div class="arrow">↓ Passive:</div>
+                        <textarea class="text-input" id="passive5" placeholder="Adaptable spaces have..."></textarea>
+                        <div class="attempts-counter" id="attempts2-5"></div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-check" onclick="checkMission2()">Check All</button>
+                        <button class="btn btn-reset" onclick="resetMission2()">Reset</button>
+                    </div>
+                    <div class="hint" id="hint2">✨ Hint: Subject + to be (correct tense) + past participle + by + agent (optional). Keep the same verb tense!</div>
+                    <div class="score-display hidden" id="score2"></div>
+                </div>
+            </div>
+
+            <!-- MISSION 3: Reported Speech -->
+            <div class="mission" id="mission3">
+                <div class="mission-header">
+                    <div class="mission-number">3</div>
+                    <div class="mission-title">Reported Speech</div>
+                </div>
+                <div class="mission-content">
+                    <p class="instruction">Convert to reported speech. Pay attention to pronoun and time changes.</p>
+                    
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 1</div>
+                        <div class="original-sentence">💬 Direct: 'I want to live in this city today,' she said.</div>
+                        <div class="arrow">↓ Reported:</div>
+                        <textarea class="text-input" id="reported1" placeholder="She said she wanted..."></textarea>
+                        <div class="attempts-counter" id="attempts3-1"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 2</div>
+                        <div class="original-sentence">💬 Direct: 'Don't waste energy in these buildings,' he ordered.</div>
+                        <div class="arrow">↓ Reported:</div>
+                        <textarea class="text-input" id="reported2" placeholder="He ordered people not to..."></textarea>
+                        <div class="attempts-counter" id="attempts3-2"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 3</div>
+                        <div class="original-sentence">💬 Direct: 'My skyscraper has solar panels now,' she said.</div>
+                        <div class="arrow">↓ Reported:</div>
+                        <textarea class="text-input" id="reported3" placeholder="She said her skyscraper..."></textarea>
+                        <div class="attempts-counter" id="attempts3-3"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 4</div>
+                        <div class="original-sentence">💬 Direct: 'Did you design this eco-friendly city?' she asked.</div>
+                        <div class="arrow">↓ Reported:</div>
+                        <textarea class="text-input" id="reported4" placeholder="She asked if/whether..."></textarea>
+                        <div class="attempts-counter" id="attempts3-4"></div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Exercise 5</div>
+                        <div class="original-sentence">💬 Direct: 'We found a solution yesterday,' they explained.</div>
+                        <div class="arrow">↓ Reported:</div>
+                        <textarea class="text-input" id="reported5" placeholder="They explained they..."></textarea>
+                        <div class="attempts-counter" id="attempts3-5"></div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-check" onclick="checkMission3()">Check All</button>
+                        <button class="btn btn-reset" onclick="resetMission3()">Reset</button>
+                    </div>
+                    <div class="hint" id="hint3">✨ Hint: Change pronouns (I→he/she, you→I), verb tenses (present→past, will→would), and time references (today→that day, tomorrow→the next day).</div>
+                    <div class="score-display hidden" id="score3"></div>
+                </div>
+            </div>
+
+            <!-- MISSION 4: Vocabulary Quiz -->
+            <div class="mission" id="mission4">
+                <div class="mission-header">
+                    <div class="mission-number">4</div>
+                    <div class="mission-title">Vocabulary Quiz</div>
+                </div>
+                <div class="mission-content">
+                    <p class="instruction">Select the correct definition for each vocabulary word.</p>
+                    
+                    <div class="exercise-item">
+                        <div class="exercise-label">Question 1: What does "Affordable" mean?</div>
+                        <div class="mc-options">
+                            <label class="mc-option">
+                                <input type="radio" name="q1" value="very expensive" onchange="selectOption(this)">
+                                <span>Very expensive and exclusive</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q1" value="cheap enough to buy" onchange="selectOption(this)">
+                                <span>Cheap enough to be bought by many people</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q1" value="not available" onchange="selectOption(this)">
+                                <span>Not available in the market</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Question 2: What is an "Urban hub"?</div>
+                        <div class="mc-options">
+                            <label class="mc-option">
+                                <input type="radio" name="q2" value="rural area" onchange="selectOption(this)">
+                                <span>A remote rural area</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q2" value="city center" onchange="selectOption(this)">
+                                <span>The central area of a city where many activities happen</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q2" value="mountain" onchange="selectOption(this)">
+                                <span>A mountain settlement</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Question 3: What does "Cutting-edge" mean?</div>
+                        <div class="mc-options">
+                            <label class="mc-option">
+                                <input type="radio" name="q3" value="old" onchange="selectOption(this)">
+                                <span>Very old and outdated</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q3" value="sharp" onchange="selectOption(this)">
+                                <span>Something physically sharp</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q3" value="newest" onchange="selectOption(this)">
+                                <span>The newest and most advanced technology</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Question 4: What is "Energy-saving"?</div>
+                        <div class="mc-options">
+                            <label class="mc-option">
+                                <input type="radio" name="q4" value="wasteful" onchange="selectOption(this)">
+                                <span>Using lots of energy</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q4" value="efficiency" onchange="selectOption(this)">
+                                <span>Using less energy or resources efficiently</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q4" value="expensive" onchange="selectOption(this)">
+                                <span>Something very expensive</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="exercise-item">
+                        <div class="exercise-label">Question 5: What is "High-tech"?</div>
+                        <div class="mc-options">
+                            <label class="mc-option">
+                                <input type="radio" name="q5" value="old-fashioned" onchange="selectOption(this)">
+                                <span>Old-fashioned and simple</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q5" value="advanced" onchange="selectOption(this)">
+                                <span>Using advanced technology and sophisticated equipment</span>
+                            </label>
+                            <label class="mc-option">
+                                <input type="radio" name="q5" value="low quality" onchange="selectOption(this)">
+                                <span>Low quality products</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn btn-check" onclick="checkMission4()">Check Answers</button>
+                        <button class="btn btn-reset" onclick="resetMission4()">Reset</button>
+                    </div>
+                    <div class="attempts-counter" id="attempts4"></div>
+                    <div class="score-display hidden" id="score4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FINAL SCORE SECTION -->
+        <div class="final-section">
+            <h2 class="final-title">📊 FINAL SCORE</h2>
+            <button class="btn-final" onclick="calculateFinalScore()">Get Final Grade</button>
+            <div id="finalResult" class="hidden" style="margin-top: 30px;">
+                <div class="score-box">
+                    <div class="score-value" id="finalScore">0/10</div>
+                    <div style="font-size: 1rem;">TOTAL SCORE</div>
+                </div>
+                <div id="message" class="message"></div>
+                <div id="validationCodeBox" class="hidden">
+                    <div style="margin-bottom: 15px; font-size: 1rem; color: var(--text-light);">Your Validation Code:</div>
+                    <div class="validation-code" id="validationCode"></div>
+                    <div style="margin-top: 15px; font-size: 0.9rem; color: var(--text-light);">Share this code to confirm completion</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Anti-cheat measures
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'U')) {
+                e.preventDefault();
+            }
+        });
+
+        // Data structure to track scores
+        const missions = {
+            mission1: { score: 0, attempts: [0, 0, 0, 0, 0, 0, 0], maxPoints: 10 },
+            mission2: { score: 0, attempts: [0, 0, 0, 0, 0], maxPoints: 10 },
+            mission3: { score: 0, attempts: [0, 0, 0, 0, 0], maxPoints: 10 },
+            mission4: { score: 0, attempts: 0, maxPoints: 10 }
+        };
+
+        // Reference answers
+        const answers = {
+            mission1: ['the', 'an', 'a', '-', 'the', 'an', 'a'],
+            mission2: [
+                'affordable houses are built by high-tech companies',
+                'that skyscraper was designed by an architect in 1990',
+                'the natural habitat will be protected',
+                'cutting-edge tech is being developed now',
+                'adaptable spaces have been created'
+            ],
+            mission3: [
+                'she said she wanted to live in that city that day',
+                'he ordered people not to waste energy in those buildings',
+                'she said her skyscraper had solar panels then',
+                'she asked if he had designed that eco-friendly city',
+                'they explained they had found a solution the day before'
+            ],
+            mission4: {
+                q1: 'cheap enough to buy',
+                q2: 'city center',
+                q3: 'newest',
+                q4: 'efficiency',
+                q5: 'advanced'
+            }
+        };
+
+        // Utility function to normalize text
+        function normalizeText(text) {
+            return text.trim().toLowerCase().replace(/[^\w\s]/g, '');
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const total = missions.mission1.score + missions.mission2.score + missions.mission3.score + missions.mission4.score;
+            const percentage = (total / 40) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = total + '/40 points';
+        }
+
+        // ===== MISSION 1: Articles =====
+        function checkMission1() {
+            let allCorrect = true;
+            let correct = 0;
+
+            for (let i = 1; i <= 7; i++) {
+                const input = document.getElementById('gap' + i);
+                const userAnswer = normalizeText(input.value);
+                const correctAnswer = normalizeText(answers.mission1[i - 1]);
+
+                missions.mission1.attempts[i - 1]++;
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('incorrect');
+                    input.classList.add('correct');
+                    input.disabled = true;
+                    correct++;
+                } else {
+                    allCorrect = false;
+                    input.classList.remove('correct');
+                    input.classList.add('incorrect');
+                    input.value = '';
+                    
+                    // Show hint after 5 failed attempts
+                    if (missions.mission1.attempts[i - 1] >= 5) {
+                        document.getElementById('hint1').classList.add('show');
+                    }
+                }
+
+                document.getElementById('attempts1').textContent = `Attempts: ${Math.max(...missions.mission1.attempts)}`;
+            }
+
+            if (allCorrect) {
+                missions.mission1.score = 10;
+                document.getElementById('score1').classList.remove('hidden');
+                document.getElementById('score1').textContent = '✓ Mission Complete: 10/10 pts';
+                document.querySelector('#mission1 .btn-check').disabled = true;
+            }
+
+            updateProgress();
+        }
+
+        function resetMission1() {
+            for (let i = 1; i <= 7; i++) {
+                const input = document.getElementById('gap' + i);
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+                input.disabled = false;
+            }
+            document.getElementById('hint1').classList.remove('show');
+            document.getElementById('attempts1').textContent = '';
+            missions.mission1.attempts = [0, 0, 0, 0, 0, 0, 0];
+        }
+
+        // ===== MISSION 2: Passive Voice =====
+        function checkMission2() {
+            let correct = 0;
+            const correctCount = 5;
+
+            for (let i = 1; i <= 5; i++) {
+                const textarea = document.getElementById('passive' + i);
+                const userAnswer = normalizeText(textarea.value);
+                const correctAnswer = normalizeText(answers.mission2[i - 1]);
+
+                missions.mission2.attempts[i - 1]++;
+
+                if (userAnswer === correctAnswer) {
+                    textarea.classList.remove('incorrect');
+                    textarea.classList.add('correct');
+                    textarea.disabled = true;
+                    correct++;
+                } else {
+                    textarea.classList.remove('correct');
+                    textarea.classList.add('incorrect');
+                    textarea.value = '';
+                    
+                    if (missions.mission2.attempts[i - 1] >= 5) {
+                        document.getElementById('hint2').classList.add('show');
+                    }
+                }
+
+                document.getElementById('attempts2-' + i).textContent = `Attempts: ${missions.mission2.attempts[i - 1]}`;
+            }
+
+            if (correct === correctCount) {
+                missions.mission2.score = 10;
+                document.getElementById('score2').classList.remove('hidden');
+                document.getElementById('score2').textContent = '✓ Mission Complete: 10/10 pts';
+                document.querySelector('#mission2 .btn-check').disabled = true;
+            }
+
+            updateProgress();
+        }
+
+        function resetMission2() {
+            for (let i = 1; i <= 5; i++) {
+                const textarea = document.getElementById('passive' + i);
+                textarea.value = '';
+                textarea.classList.remove('correct', 'incorrect');
+                textarea.disabled = false;
+                document.getElementById('attempts2-' + i).textContent = '';
+            }
+            document.getElementById('hint2').classList.remove('show');
+            missions.mission2.attempts = [0, 0, 0, 0, 0];
+        }
+
+        // ===== MISSION 3: Reported Speech =====
+        function checkMission3() {
+            let correct = 0;
+            const correctCount = 5;
+
+            for (let i = 1; i <= 5; i++) {
+                const textarea = document.getElementById('reported' + i);
+                const userAnswer = normalizeText(textarea.value);
+                const correctAnswer = normalizeText(answers.mission3[i - 1]);
+
+                missions.mission3.attempts[i - 1]++;
+
+                if (userAnswer === correctAnswer) {
+                    textarea.classList.remove('incorrect');
+                    textarea.classList.add('correct');
+                    textarea.disabled = true;
+                    correct++;
+                } else {
+                    textarea.classList.remove('correct');
+                    textarea.classList.add('incorrect');
+                    textarea.value = '';
+                    
+                    if (missions.mission3.attempts[i - 1] >= 5) {
+                        document.getElementById('hint3').classList.add('show');
+                    }
+                }
+
+                document.getElementById('attempts3-' + i).textContent = `Attempts: ${missions.mission3.attempts[i - 1]}`;
+            }
+
+            if (correct === correctCount) {
+                missions.mission3.score = 10;
+                document.getElementById('score3').classList.remove('hidden');
+                document.getElementById('score3').textContent = '✓ Mission Complete: 10/10 pts';
+                document.querySelector('#mission3 .btn-check').disabled = true;
+            }
+
+            updateProgress();
+        }
+
+        function resetMission3() {
+            for (let i = 1; i <= 5; i++) {
+                const textarea = document.getElementById('reported' + i);
+                textarea.value = '';
+                textarea.classList.remove('correct', 'incorrect');
+                textarea.disabled = false;
+                document.getElementById('attempts3-' + i).textContent = '';
+            }
+            document.getElementById('hint3').classList.remove('show');
+            missions.mission3.attempts = [0, 0, 0, 0, 0];
+        }
+
+        // ===== MISSION 4: Vocabulary =====
+        function selectOption(radio) {
+            const labels = radio.parentElement.parentElement.querySelectorAll('.mc-option');
+            labels.forEach(label => label.classList.remove('selected'));
+            radio.parentElement.classList.add('selected');
+        }
+
+        function checkMission4() {
+            let correct = 0;
+            const questionNames = ['q1', 'q2', 'q3', 'q4', 'q5'];
+
+            questionNames.forEach(name => {
+                const selected = document.querySelector(`input[name="${name}"]:checked`);
+                const parentLabel = selected ? selected.parentElement : null;
+                const allLabels = document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.parentElement.classList.remove('correct', 'incorrect'));
+
+                if (selected && selected.value === answers.mission4[name]) {
+                    parentLabel.classList.add('correct');
+                    correct++;
+                } else if (parentLabel) {
+                    parentLabel.classList.add('incorrect');
+                }
+            });
+
+            missions.mission4.attempts++;
+            document.getElementById('attempts4').textContent = `Attempts: ${missions.mission4.attempts}`;
+
+            if (correct === 5) {
+                missions.mission4.score = 10;
+                document.getElementById('score4').classList.remove('hidden');
+                document.getElementById('score4').textContent = '✓ Mission Complete: 10/10 pts';
+                document.querySelector('#mission4 .btn-check').disabled = true;
+            }
+
+            updateProgress();
+        }
+
+        function resetMission4() {
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+                radio.parentElement.classList.remove('selected', 'correct', 'incorrect');
+            });
+            document.getElementById('attempts4').textContent = '';
+            missions.mission4.attempts = 0;
+        }
+
+        // ===== FINAL SCORE =====
+        function calculateFinalScore() {
+            const totalPoints = missions.mission1.score + missions.mission2.score + missions.mission3.score + missions.mission4.score;
+            const finalScore = (totalPoints / 40) * 10;
+            const rounded = finalScore.toFixed(1);
+
+            document.getElementById('finalResult').classList.remove('hidden');
+            document.getElementById('finalScore').textContent = rounded + '/10';
+
+            let messageText = '';
+            let messageClass = '';
+
+            if (rounded >= 8) {
+                messageText = '🎉 Excellent! You are ready for the exam!';
+                messageClass = 'success';
+                showValidationCode();
+            } else if (rounded >= 7) {
+                messageText = '✨ Great job! Keep studying to improve further.';
+                messageClass = 'success';
+            } else if (rounded >= 5) {
+                messageText = '📚 Good effort! Review the difficult topics.';
+                messageClass = 'warning';
+            } else {
+                messageText = '💪 Keep practicing! You\'ll improve with more effort.';
+                messageClass = 'warning';
+            }
+
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = messageText;
+            messageEl.className = 'message ' + messageClass;
+
+            // Log score data
+            console.log('Final Score Report:', {
+                mission1: missions.mission1.score,
+                mission2: missions.mission2.score,
+                mission3: missions.mission3.score,
+                mission4: missions.mission4.score,
+                total: totalPoints,
+                finalGrade: rounded
+            });
+        }
+
+        function showValidationCode() {
+            const words = ['FUTURE', 'CITY', 'TECH', 'GREEN', 'SMART', 'BUILD', 'URBAN', 'SPACE', 'ENERGY', 'SOLAR', 'NEXUS', 'VISION'];
+            const randomWord = words[Math.floor(Math.random() * words.length)];
+            const code = randomWord + String(Math.floor(Math.random() * 9000) + 1000);
+
+            document.getElementById('validationCodeBox').classList.remove('hidden');
+            document.getElementById('validationCode').textContent = code;
+        }
+
+        // Prevent local storage tampering by using in-memory storage only
+        window.addEventListener('beforeunload', () => {
+            // Data persists only during the session
+        });
+    </script>
+</body>
+</html>
